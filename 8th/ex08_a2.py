@@ -12,7 +12,7 @@ import time
 
 
 def main():
-    for i in range(3, 4):
+    for i in range(3, 6):
         print(str(i) + '桁のデータファイル')
         random_nums = create_random_nums(i)
 

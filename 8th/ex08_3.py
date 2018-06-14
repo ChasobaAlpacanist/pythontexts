@@ -48,7 +48,7 @@ class Data():
                 if(i != pivot_index):
                     self.compare_counter += 1
                     if(int(scores[i]) > int(scores[pivot_index])):
-                        self.compare_counter += 1
+                        self.change_counter += 1
                         left.append(array[i])
                     elif(int(scores[i]) == int(scores[pivot_index])):
                         self.compare_counter += 1
@@ -56,10 +56,8 @@ class Data():
                             self.change_counter += 1
                             left.append(array[i])
                         else:
-                            self.change_counter += 1
                             right.append(array[i])
                     else:
-                        self.change_counter += 1
                         right.append(array[i])
             left = self.quick_sort(left)
             right = self.quick_sort(right)

@@ -56,7 +56,6 @@ class Data():
                         self.change_counter += 1
                         left.append(array[i])
                     else:
-                        self.change_counter += 1
                         right.append(array[i])
             left = self.quick_sort(left)
             right = self.quick_sort(right)
