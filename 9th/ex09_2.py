@@ -22,13 +22,13 @@ def g(n):
         else:
             return n + ((n - 1) * g(n - 2)) #f(n - 1)
 def main():
-    print('f(5) = ' + str(f(1)))
-    print('g(5) = ' + str(g(1)))
+    print('f(1) = ' + str(f(1)))
+    print('g(1) = ' + str(g(1)))
     print('f(2) = ' + str(f(2)))
     print('g(2) = ' + str(g(2)))
     print('f(0) = ' + str(f(0)))
     print('g(0) = ' + str(g(0)))
-    print('f(-1) = ' + str(f(3)))
-    print('g(-1) = ' + str(g(3)))
+    print('f(3) = ' + str(f(3)))
+    print('g(3) = ' + str(g(3)))
 
 main()

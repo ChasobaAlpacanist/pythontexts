@@ -19,7 +19,10 @@ def factorial_roop(n):
 
 def main():
     n = int(input('n?:'))
-    print(factorial_recursion(n))
-    print(factorial_roop(n))
+    if(n < 0):
+        print('負の値です。処理を中断します')
+    else:
+        print(factorial_recursion(n))
+        print(factorial_roop(n))
 
 main()
