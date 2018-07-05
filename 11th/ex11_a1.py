@@ -3,13 +3,37 @@
 # 作成しなさい
 #
 
-def bukket_cal(a, b, c):
-    #大きいバケツを整数回使ったのち、残りの水が小さいバケツの整数倍になれば手順を示す。
-    bigger = max(a, b)
-    smaller = max(a, b)
-    i = 0
-    while(bigger * i > c):
-        water_left = c - bigger * i
-        if(water_left % smaller == 0):
-            
-        i += 1
+class Bucket():
+    def __init__(self, max_volume):
+        self.MAX_VOLUME = max_volume
+        self.now_volume = 0
+
+    def drop(self):
+        self.now_volume = 0
+
+    def fill(self):
+        self.now_volume = self.MAX_VOLUME
+
+def move(from_bucket, to_bucket):
+    #余るとき
+    if(from_bucket.now_volume >= to_bucket.MAX_VOLUME - to_bucket.now_volume):
+        from_bucket.now_volume -= (to_bucket.MAX_VOLUME - to_bucket.now_volume)
+        to_bucket.now_volume = to_bucket.MAX_VOLUME
+    #余らないとき
+    else:
+        to_bucket.now_volume += from_bucket.now_volume
+        from_bucket.now_volume = 0
+
+def try_action(actions, a, b, c):
+    #a, bともに空の時、どちらかに水を入れる。
+    if(a.now_volume = 0 and b.now_volume = 0):
+        #Aに水を入れる
+        a.fill()
+        actions.append('Fill(a)')
+        try_action(actions, a, b, c)
+        #Bに水を入れる
+        a.drop()
+        actions.remove('Fill(a)')
+        b.fill()
+        actions.append('Fill(b)')
+    elif
