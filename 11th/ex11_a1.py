@@ -36,4 +36,5 @@ def try_action(actions, a, b, c):
         actions.remove('Fill(a)')
         b.fill()
         actions.append('Fill(b)')
+        try_action(actions, a, b, c)
     elif
