@@ -5,18 +5,23 @@
 #   作成するようにし、リストの内容を表示しなさい。
 #
 
+import sys
+
 class List():
-    def __init__(self, key, data, next = None):
-        self.key = key
-        self.data = data
+    def __init__(self, data, next = None):
+        split_data = data.split()
+        self.number: int = int(split_data[0])
+        self.name: str = split_data[1]
+        self.profile: str = split_data[2]
         self.next = next
 
 def main():
+    args = sys.argv
     p = None
-    with open('zac_japan.txt', 'r') as f:
+    with open(args[1], 'r') as f:
         lines = f.readlines()
-        for i in range(len(lines)):
-            newp = List(i, lines[i], None)
+        for line in lines:
+            newp = List(line, None)
             if(p == None):
                 p = newp
             else:
@@ -28,15 +33,18 @@ def sorted_list_by_number(x, p):
         if(p.next == None):
             p.next = x
             break
-        elif(int(p.data.split()[0]) > int(x.data.split()[0])):
-            tmp = List(x.key, x.data)
+        elif(p.number > x.number):
+            tmp_data = ' '.join([str(x.number), x.name, x.profile])
+            tmp = List(tmp_data)
             #xをpにする
-            x.key = p.key
-            x.data = p.data
+            x.number = p.number
+            x.name = p.name
+            x.profile = p.profile
             x.next = p.next
             #pの情報をxにして後ろx(元はp)を繋げる
-            p.key = tmp.key
-            p.data = tmp.data
+            p.number = tmp.number
+            p.name = tmp.name
+            p.profile = tmp.profile
             p.next = x
             break
         p = p.next
@@ -44,8 +52,7 @@ def sorted_list_by_number(x, p):
 
 def print_list(p):
     while(p != None):
-        split_data = p.data.split()
-        print('<{:d}, {:s}, {:s}>'.format(int(split_data[0]), split_data[1], split_data[2]))
+        print('<{:d}, {:s}, {:s}>'.format(p.number, p.name, p.profile))
         p = p.next
     print('')
 

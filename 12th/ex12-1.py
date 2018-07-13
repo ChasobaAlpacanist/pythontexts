@@ -10,27 +10,29 @@
 #     プロフィール: 文字列
 #
 
+import sys
+
 class List():
-    def __init__(self, key, data, next = None):
+    def __init__(self, data, next = None):
         split_data = data.split()
-        self.key = key
-        self.number = int(split_data[0])
-        self.name = split_data[1]
-        self.profile = split_data[2]
+        self.number: int = int(split_data[0])
+        self.name: str = split_data[1]
+        self.profile: str = split_data[2]
         self.next = next
 
 def main():
+    args = sys.argv
     p = None
-    with open('zac_japan.txt', 'r') as f:
+    with open(args[1], 'r') as f:
         lines = f.readlines()
         for i in range(len(lines)):
-            newp = List(i, lines[i], p)
+            newp = List(lines[i], p)
             p = newp
     print_list(p)
 
 def print_list(p):
     while(p != None):
-        print('<{:d}, {:s}, {:s}>'.format(p.number, p.name, p.profile))
+        print('{:d} {:s} {:s}'.format(p.number, p.name, p.profile))
         p = p.next
     print('')
 
